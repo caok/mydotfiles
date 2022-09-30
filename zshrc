@@ -40,4 +40,3 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 
 # Get macOS Software Updates, Homebrew, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup;'
-

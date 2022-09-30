@@ -67,16 +67,48 @@ filetype plugin on
 " 启动智能补全
 filetype plugin indent on
 
+"-----------------
+" extension
+"-----------------
+" 快捷键
+" F3 search & replace current word under cursor
+nnoremap <F3> /<c-r><c-w><cr>
+" F4 toggle for paste, Insert Mode
+set pastetoggle=<F4>
+" toggle for copy & paste, Normal Mode
+nnoremap <silent> <F4> :set nu!<CR>:set list!<CR>
+
+" edit mapping
+let mapleader=','
+
 "复制到系统剪贴板
 "vmap "+y :w !pbcopy<CR><CR>
 vmap <leader>yy :w !pbcopy<CR><CR>
 
+noremap <leader>h ^
+noremap <leader>l $
+
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
 " tab键的自动完成现在会忽略这些
 set wildignore+=tmp/*,*/tmp/*,*.so,*.swp,*.zip,*.o,*.obj,*.bak,*.exe,.git
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" tabular
+noremap <leader>a,  :Tabularize /,<cr>
+noremap <leader>a#  :Tabularize /#<cr>
+noremap <leader>a=  :Tabularize /=<cr>
+noremap <leader>a== :Tabularize /==<cr>
+noremap <leader>a:  :Tabularize /:<cr>
+noremap <leader>a\| :Tabularize /\|<cr>
+noremap <leader>a>  :Tabularize /=><cr>
+
+" 关闭代码折叠
+let g:vim_markdown_folding_disabled = 1
+
 " OPEN FILES IN DIRECTORY OF CURRENT FILE
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
 map <leader>v :view %%
@@ -96,8 +128,9 @@ map <leader>n :call RenameFile()<cr>
 " vim-plug
 call plug#begin('~/.vim/plugged')
 
-" filetype syntax highlight
-Plug 'depuracao/vim-rdoc'
-Plug 'plasticboy/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
 
 call plug#end()
+
+" :PlugInstall
